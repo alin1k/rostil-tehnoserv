@@ -5,6 +5,7 @@ export default function Home() {
     <div>
       <h1>Alin</h1>
       <h1>Victor</h1>
+      <h1>Cosmin</h1>
     </div>
   );
 }
