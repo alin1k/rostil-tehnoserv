@@ -23,24 +23,33 @@ export default function Navbar() {
             <span className="font-medium">Actiuni</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
+
             <Link href="/oferte">
               <DropdownMenuItem className="hover:cursor-pointer">
                 <ClipboardList/>
                 <span>Oferte</span>
               </DropdownMenuItem>
             </Link>
+
             <DropdownMenuItem>
               <Package/>
               <span>Produse</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+             
+            <Link href="/furnizori">
+            <DropdownMenuItem className="hover:cursor-pointer">
               <Truck/>
               <span>Furnizori</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            </Link>
+
+            <Link href="/clienti">
+            <DropdownMenuItem className="hover:cursor-pointer">
               <User/>
               <span>Clienți</span>
             </DropdownMenuItem>
+            </Link>
+
           </DropdownMenuContent>
         </DropdownMenu>
         <span className="font-medium">Setari</span>
