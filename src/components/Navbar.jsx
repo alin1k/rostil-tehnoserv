@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
-import { 
+import {
   ClipboardList,
   Package,
   Truck,
@@ -26,28 +26,29 @@ export default function Navbar() {
 
             <Link href="/oferte">
               <DropdownMenuItem className="hover:cursor-pointer">
-                <ClipboardList/>
+                <ClipboardList />
                 <span>Oferte</span>
               </DropdownMenuItem>
             </Link>
+            <Link href="/produse">
+              <DropdownMenuItem>
+                <Package />
+                <span>Produse</span>
+              </DropdownMenuItem>
+            </Link>
 
-            <DropdownMenuItem>
-              <Package/>
-              <span>Produse</span>
-            </DropdownMenuItem>
-             
             <Link href="/furnizori">
-            <DropdownMenuItem className="hover:cursor-pointer">
-              <Truck/>
-              <span>Furnizori</span>
-            </DropdownMenuItem>
+              <DropdownMenuItem className="hover:cursor-pointer">
+                <Truck />
+                <span>Furnizori</span>
+              </DropdownMenuItem>
             </Link>
 
             <Link href="/clienti">
-            <DropdownMenuItem className="hover:cursor-pointer">
-              <User/>
-              <span>Clienți</span>
-            </DropdownMenuItem>
+              <DropdownMenuItem className="hover:cursor-pointer">
+                <User />
+                <span>Clienți</span>
+              </DropdownMenuItem>
             </Link>
 
           </DropdownMenuContent>
