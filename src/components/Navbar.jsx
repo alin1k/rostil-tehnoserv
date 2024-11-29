@@ -12,11 +12,14 @@ import {
   User,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 export default function Navbar() {
   return (
     <div className='py-4 px-24 flex justify-between border border-bottom'>
-      <Link href='/' className='font-bold text-xl'>RostilThenoServ</Link>
+      {/*<Link href='/' className='font-bold text-xl'>RostilThenoServ</Link>*/}
+      <Image src="/static/images/rostil_logo.png" alt="logo" width={225} height={50} />
       <div className='flex items-center gap-5'>
         <DropdownMenu>
           <DropdownMenuTrigger>
