@@ -33,7 +33,7 @@ export default function Navbar() {
               </DropdownMenuItem>
             </Link>
             <Link href="/produse">
-              <DropdownMenuItem>
+              <DropdownMenuItem className="hover:cursor-pointer">
                 <Package />
                 <span>Produse</span>
               </DropdownMenuItem>
@@ -55,7 +55,7 @@ export default function Navbar() {
 
           </DropdownMenuContent>
         </DropdownMenu>
-        <span className="font-medium">Setari</span>
+        <span className="font-medium">Setări</span>
       </div>
     </div>
   )
