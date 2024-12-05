@@ -89,12 +89,12 @@ function Clienti() {
 
           <div className="px-5 py-8 flex flex-col w-[320px]">
             <p>Nume client: </p>
-            <input placeholder="Adăugați numele clientului" value={nume} onChange={handleClient} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none  "></input>
+            <input placeholder="Adăugați numele clientului" value={nume} onChange={handleClient} maxLength={50} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none  "></input>
             <p>Telefon client:</p>
-            <input placeholder="Adăugați telefonul clientului" value={telefon} onChange={handleTelefon} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none" ></input>
+            <input placeholder="Adăugați telefonul clientului" value={telefon} onChange={handleTelefon} maxLength={50} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none" ></input>
 
             <p>Email client:</p>
-            <input placeholder="Adăugați email-ul clientului" value={email} onChange={handleEmail} className=" mt-2 border-b border-gray-500 focus:outline-none" ></input>
+            <input placeholder="Adăugați email-ul clientului" value={email} onChange={handleEmail} maxLength={50} className=" mt-2 border-b border-gray-500 focus:outline-none" ></input>
           </div>
 
           <button onClick={handleAdaugare} className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-2gi00 active:scale-95 ease-out">Adăugare în listă</button>

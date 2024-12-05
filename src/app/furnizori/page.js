@@ -88,6 +88,7 @@ function Furnizori() {
                             placeholder="Adăugați numele furnizorului"
                             value={nume}
                             className="mt-2 mb-8 border-b border-gray-500 focus:outline-none"
+                            maxLength={50}
                         />
                         <p>Adresă furnizor:</p>
                         <input
@@ -95,6 +96,7 @@ function Furnizori() {
                             placeholder="Adăugați adresa furnizorului"
                             className="mt-2 mb-8 border-b border-gray-500 focus:outline-none"
                             value={adresa}
+                            maxLength={50}
                         />
                         <p>Website furnizor:</p>
                         <input
@@ -102,6 +104,7 @@ function Furnizori() {
                             placeholder="Adăugați website-ul furnizorului"
                             className="mt-2 border-b border-gray-500 focus:outline-none"
                             value={email}
+                            maxLength={50}
                         />
                     </div>
                     <button
