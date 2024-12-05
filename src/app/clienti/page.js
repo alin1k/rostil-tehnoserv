@@ -110,9 +110,9 @@ function Clienti() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[150px] text-center">Nume furnizor</TableHead>
-                  <TableHead className="text-center">Adresă furnizor</TableHead>
-                  <TableHead className="text-center">Website furnizor</TableHead>
+                  <TableHead className="w-[150px] text-center">Nume client</TableHead>
+                  <TableHead className="text-center">Adresă client</TableHead>
+                  <TableHead className="text-center">Website client</TableHead>
                   <TableHead className="text-right w-[70px]">Acțiuni</TableHead>
                 </TableRow>
               </TableHeader>
