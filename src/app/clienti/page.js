@@ -111,8 +111,8 @@ function Clienti() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[150px] text-center">Nume client</TableHead>
-                  <TableHead className="text-center">Adresă client</TableHead>
-                  <TableHead className="text-center">Website client</TableHead>
+                  <TableHead className="text-center">Telefon client</TableHead>
+                  <TableHead className="text-center">Email client</TableHead>
                   <TableHead className="text-right w-[70px]">Acțiuni</TableHead>
                 </TableRow>
               </TableHeader>
