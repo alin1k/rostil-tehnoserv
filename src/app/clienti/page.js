@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useClient, useClientInputs } from "@/lib/hooks/clienti";
 import {
   Table,
   TableBody,
@@ -23,59 +22,16 @@ import {
   Trash
 } from 'lucide-react';
 function Clienti() {
-  const [client, setClient] = useState([])
-  const [nume, SetNume] = useState("")
-  const [telefon, setTelefon] = useState("")
-  const [email, setEmail] = useState("")
-
-  function handleClient(event) {
-    SetNume(event.target.value)
-  };
-
-  function handleTelefon(event) {
-    setTelefon(event.target.value)
-  };
-
-  function handleEmail(event) {
-    setEmail(event.target.value)
-  };
-
-  function handleAdaugare() {
-    if (nume === "" || telefon === "" || email === "")
-      alert("spatii necompletate")
-
-    else {
-      const newClient = {
-        cNume: nume,
-        cEmail: email,
-        cTelefon: telefon
-      };
-
-      setClient(c => [...c, newClient])
-    }
-
-
-    SetNume("");
-    setTelefon("");
-    setEmail("");
-  };
-
-  function removeClient(index) {
-    setClient(client.filter((componenta, i) => index !== i))
-  }
-
-  useEffect(() => {
-    const storedClienti = localStorage.getItem("clienti");
-    if (storedClienti) {
-      setClient(JSON.parse(storedClienti));
-    }
-  }, []);
-
-
-  useEffect(() => {
-    localStorage.setItem("clienti", JSON.stringify(client));
-  }, [client]);
-
+  
+  const {client, handleAdaugare, removeClient} = useClient();
+  const {
+    nume, setNume,
+    telefon, setTelefon,
+    email, setEmail,
+    handleClient,
+    handleTelefon,
+    handleEmail
+  } = useClientInputs()
 
   return (
     <>
@@ -94,7 +50,7 @@ function Clienti() {
             <input placeholder="Adăugați email-ul clientului" value={email} onChange={handleEmail} maxLength={50} className=" mt-2 border-b border-gray-500 focus:outline-none" ></input>
           </div>
 
-          <button onClick={handleAdaugare} className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-2gi00 active:scale-95 ease-out">Adăugare în listă</button>
+          <button onClick={()=>handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail)} className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-2gi00 active:scale-95 ease-out">Adăugare în listă</button>
         </div>
       </div>
 
