@@ -1,14 +1,11 @@
 "use client"
 
 import { useState } from "react";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { useEffect } from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -120,8 +117,8 @@ function Clienti() {
                 {client.map((client, index) => (
                   <TableRow key={index}>
                     <TableCell className="text-center">{client.cNume}</TableCell>
-                    <TableCell className="text-center">{client.cEmail}</TableCell>
                     <TableCell className="text-center">{client.cTelefon}</TableCell>
+                    <TableCell className="text-center">{client.cEmail}</TableCell>
                     <TableCell className="text-center">
                       <DropdownMenu>
                         <DropdownMenuTrigger>

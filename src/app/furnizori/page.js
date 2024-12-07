@@ -1,14 +1,11 @@
 "use client";
 
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableFooter,
     TableHead,
     TableHeader,
     TableRow,
