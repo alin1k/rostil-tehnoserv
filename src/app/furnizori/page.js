@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useFurnizor, useFurnizorInputs } from "@/lib/hooks/furnizori";
 import {
     Table,
     TableBody,
@@ -24,54 +23,21 @@ import {
 } from 'lucide-react';
 
 function Furnizori() {
-    const [furnizor, setFurnizor] = useState([]);
-    const [nume, setNume] = useState("");
-    const [email, setEmail] = useState("");
-    const [adresa, setAdresa] = useState("");
 
-    function handleNume(event) {
-        setNume(event.target.value);
-    }
-
-    function handleEmail(event) {
-        setEmail(event.target.value);
-    }
-
-    function handleAdresa(event) {
-        setAdresa(event.target.value);
-    }
-
-    function handleAddFurnizor() {
-        if (nume === "" || email === "" || adresa === "") {
-            alert("Spatii necompletate");
-        } else {
-            const newFurnizor = {
-                fNume: nume,
-                fEmail: email,
-                fAdresa: adresa,
-            };
-            setFurnizor((f) => [...f, newFurnizor]);
-
-            setNume("");
-            setAdresa("");
-            setEmail("");
-        }
-    }
-
-    function removeFurnizor(index) {
-        setFurnizor(furnizor.filter((_, i) => index !== i));
-    }
-
-    useEffect(() => {
-        const storedFurnizori = localStorage.getItem("furnizori");
-        if (storedFurnizori) {
-            setFurnizor(JSON.parse(storedFurnizori));
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("furnizori", JSON.stringify(furnizor));
-    }, [furnizor]);
+    const {
+        furnizor,
+        handleAddFurnizor,
+        removeFurnizor
+    } = useFurnizor()
+    
+    const {
+        nume, setNume,
+        email, setEmail,
+        adresa, setAdresa,
+        handleNume,
+        handleEmail,
+        handleAdresa
+    } = useFurnizorInputs();
 
     return (
         <>
@@ -105,7 +71,7 @@ function Furnizori() {
                         />
                     </div>
                     <button
-                        onClick={handleAddFurnizor}
+                        onClick={()=>handleAddFurnizor(nume, adresa, email, setNume, setAdresa, setEmail)}
                         className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-200 active:scale-95 ease-out"
                     >
                         Adăugare în listă
