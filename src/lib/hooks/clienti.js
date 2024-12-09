@@ -15,10 +15,9 @@ export const useClient = ()=>{
   }, [client]);
 
   function handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail) {
-    if (nume === "" || telefon === "" || email === "")
-      alert("spatii necompletate")
-
-    else {
+    
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (regex.test(email) && nume!=="" && telefon!=="" && telefon.length>=10){
       const newClient = {
         cNume: nume,
         cEmail: email,
@@ -26,11 +25,13 @@ export const useClient = ()=>{
       };
 
       setClient(c => [...c, newClient])
-    }
 
     setNume("");
     setTelefon("");
     setEmail("");
+    }
+
+  
   };
 
   function removeClient(index) {

@@ -15,9 +15,7 @@ export const useFurnizor = ()=>{
   }, [furnizor]);
 
   function handleAddFurnizor(nume, adresa, email, setNume, setAdresa, setEmail) {
-    if (nume === "" || email === "" || adresa === "") {
-      alert("Spatii necompletate");
-    } else {
+    
       const newFurnizor = {
           fNume: nume,
           fEmail: email,
@@ -28,7 +26,7 @@ export const useFurnizor = ()=>{
       setNume("");
       setAdresa("");
       setEmail("");
-    }
+    
   }
 
   function removeFurnizor(index) {
