@@ -14,38 +14,11 @@ export const useClient = ()=>{
     localStorage.setItem("clienti", JSON.stringify(client));
   }, [client]);
 
-  function handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail,setNumeError,setEmailError,setTelefonError) {
-    
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    let valid = true;
+  function handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail) {
+    if (nume === "" || telefon === "" || email === "")
+      alert("spatii necompletate")
 
-
-    let isValid = true;
-
-    // Reset error states
-    setNumeError("");
-    setTelefonError("");
-    setEmailError("");
-
-    // Validare pentru nume
-    if (nume === "") {
-      setNumeError("Numele este obligatoriu.");
-      isValid = false;
-    }
-
-    // Validare pentru telefon
-    if (telefon === "" ) {
-      setTelefonError("Telefonul este invalid");
-      isValid = false;
-    }
-
-    // Validare pentru email
-    if (!regex.test(email) || email ==="") {
-      setEmailError("Emailul este invalid.");
-      isValid = false;
-    }
-
-    if (isValid) {
+    else {
       const newClient = {
         cNume: nume,
         cEmail: email,
@@ -53,13 +26,11 @@ export const useClient = ()=>{
       };
 
       setClient(c => [...c, newClient])
+    }
 
     setNume("");
     setTelefon("");
     setEmail("");
-    }
-
-  
   };
 
   function removeClient(index) {
@@ -79,10 +50,6 @@ export const useClientInputs = ()=>{
   const [nume, setNume] = useState("")
   const [telefon, setTelefon] = useState("")
   const [email, setEmail] = useState("")
-  const [numeError, setNumeError] = useState("");
-  const [telefonError, setTelefonError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  
 
   function handleClient(event) {
     setNume(event.target.value)
@@ -102,9 +69,6 @@ export const useClientInputs = ()=>{
     email, setEmail,
     handleClient,
     handleTelefon,
-    handleEmail,
-    numeError, setNumeError,
-    telefonError, setTelefonError,
-    emailError, setEmailError,
+    handleEmail
   }
 }

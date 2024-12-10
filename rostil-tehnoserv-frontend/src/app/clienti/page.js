@@ -30,71 +30,30 @@ function Clienti() {
     email, setEmail,
     handleClient,
     handleTelefon,
-    handleEmail,
-    numeError, setNumeError,
-    telefonError, setTelefonError,
-    emailError, setEmailError,
+    handleEmail
   } = useClientInputs()
-
-  function validateEmail(email){
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-    return regex.test(email);
-  }
 
   return (
     <>
-     
-     <div className="flex justify-center items-center mb-9">
+      <div className="flex justify-center items-center mb-9  ">
         <div className="border-2 border-black p-4 w-[450px] mt-4 p-4 shadow-2xl ">
 
-          <p className="text-center text-4xl mt-2">Adăugare Client</p>
+          <p className="text-center text-4xl mt-2"> Adăugare Client </p>
 
           <div className="px-5 py-8 flex flex-col w-[320px]">
-            <p>Nume client:</p>
-            <input
-              placeholder="Adăugați numele clientului"
-              value={nume}
-              onChange={handleClient}
-              maxLength={50}
-              required
-              className={`mt-2 mb-8 border-b ${numeError ? 'border-red-500' : 'border-gray-500'} ${numeError ? 'placeholder-red-500' : ''} focus:outline-none`}
-            />
-           
-
+            <p>Nume client: </p>
+            <input placeholder="Adăugați numele clientului" value={nume} onChange={handleClient} maxLength={50} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none  "></input>
             <p>Telefon client:</p>
-            <input
-              placeholder="Adăugați telefonul clientului"
-              value={telefon}
-              onChange={handleTelefon}
-              maxLength={50}
-              type="number"
-              required
-              className={`mt-2 mb-8 border-b ${telefonError ? 'border-red-500' : 'border-gray-500'} ${telefonError ? 'placeholder-red-500' : ''} focus:outline-none`}
-            />
-           
+            <input placeholder="Adăugați telefonul clientului" value={telefon} onChange={handleTelefon} maxLength={50} className=" mt-2 mb-8 border-b border-gray-500 focus:outline-none" ></input>
 
             <p>Email client:</p>
-            <input
-              placeholder="Adăugați email-ul clientului"
-              value={email}
-              onChange={handleEmail}
-              maxLength={50}
-              type="email"
-              required
-              className={`mt-2 border-b ${emailError ? 'border-red-500' : 'border-gray-500'} ${emailError ? 'placeholder-red-500' : ''} focus:outline-none`}
-            />
-           
+            <input placeholder="Adăugați email-ul clientului" value={email} onChange={handleEmail} maxLength={50} className=" mt-2 border-b border-gray-500 focus:outline-none" ></input>
           </div>
 
-          <button
-            onClick={() => handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail, setNumeError, setTelefonError, setEmailError)}
-            className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-200 active:scale-95 ease-out"
-          >
-            Adăugare în listă
-          </button>
+          <button onClick={()=>handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail)} className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-2gi00 active:scale-95 ease-out">Adăugare în listă</button>
         </div>
       </div>
-          
+
       <div>
 
         <ul>
