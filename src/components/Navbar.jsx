@@ -10,9 +10,11 @@ import {
   Package,
   Truck,
   User,
+  Settings
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from './ui/button';
 
 
 export default function Navbar() {
@@ -20,42 +22,25 @@ export default function Navbar() {
     <div className='py-4 px-24 flex justify-between border border-bottom'>
       <Link href='/'><Image src="/images/RostilLogoBun.png" alt="logo" width={225} height={50} /></Link>
       <div className='flex items-center gap-5'>
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <span className="font-medium">Actiuni</span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-
-            <Link href="/oferte">
-              <DropdownMenuItem className="hover:cursor-pointer">
-                <ClipboardList />
-                <span>Oferte</span>
-              </DropdownMenuItem>
-            </Link>
-            <Link href="/produse">
-              <DropdownMenuItem className="hover:cursor-pointer">
-                <Package />
-                <span>Produse</span>
-              </DropdownMenuItem>
-            </Link>
-
-            <Link href="/furnizori">
-              <DropdownMenuItem className="hover:cursor-pointer">
-                <Truck />
-                <span>Furnizori</span>
-              </DropdownMenuItem>
-            </Link>
-
-            <Link href="/clienti">
-              <DropdownMenuItem className="hover:cursor-pointer">
-                <User />
-                <span>Clienți</span>
-              </DropdownMenuItem>
-            </Link>
-
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <span className="font-medium">Setări</span>
+        <Link href="/oferte" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
+            <ClipboardList className='scale-75'/>
+            <span>Oferte</span>
+        </Link>
+        <Link href="/produse" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
+            <Package className='scale-75'/>
+            <span>Produse</span>
+        </Link>
+        <Link href="/furnizori" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
+            <Truck className='scale-75'/>
+            <span>Furnizori</span>
+        </Link>
+        <Link href="/clienti" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
+            <User className='scale-75'/>
+            <span>Clienți</span>
+        </Link>
+        <Button variant='outline' size='icon'>
+          <Settings/>
+        </Button>
       </div>
     </div>
   )
