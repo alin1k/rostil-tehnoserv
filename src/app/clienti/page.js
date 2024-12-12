@@ -94,14 +94,12 @@ function Clienti() {
                             <SquarePen />
                             <span>Editare</span>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem
+                            className="hover:cursor-pointer"
+                            onClick={() => removeClient(index)}
+                          >
                             <Trash />
-                            <span
-                              className="hover:cursor-pointer"
-                              onClick={() => removeClient(index)}
-                            >
-                              Șterge
-                            </span>
+                            <span>Șterge</span>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
