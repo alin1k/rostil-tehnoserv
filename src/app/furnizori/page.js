@@ -112,14 +112,12 @@ function Furnizori() {
                                                     <SquarePen />
                                                     <span>Editare</span>
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem>
+                                                <DropdownMenuItem
+                                                    className="hover:cursor-pointer"
+                                                    onClick={() => removeFurnizor(index)}
+                                                >
                                                     <Trash />
-                                                    <span
-                                                        className="hover:cursor-pointer"
-                                                        onClick={() => removeFurnizor(index)}
-                                                    >
-                                                        Șterge
-                                                    </span>
+                                                    <span>Șterge</span>
                                                 </DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>
