@@ -15,7 +15,6 @@ export const useClient = ()=>{
   }, [client]);
 
   function handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail) {
-    
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (regex.test(email) && nume!=="" && telefon!=="" && telefon.length>=10){
       const newClient = {
@@ -30,8 +29,6 @@ export const useClient = ()=>{
     setTelefon("");
     setEmail("");
     }
-
-  
   };
 
   function removeClient(index) {

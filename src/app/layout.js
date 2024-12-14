@@ -3,6 +3,8 @@ import { Montserrat } from 'next/font/google'
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from '@/components/Footer';
+import {FurnizoriProvider} from '@/lib/context/furnizori';
+import { ClientiProvider } from '@/lib/context/clienti';
 
 const monteserrat = Montserrat({
   weight: '400',
@@ -18,9 +20,13 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
       >
         <Navbar/>
-        <main className='px-24 py-5 flex-grow flex-1'>
-          {children}
-        </main>
+          <FurnizoriProvider>
+            <ClientiProvider>
+              <main className='px-24 py-5 flex-grow flex-1'>
+                {children}
+              </main>
+            </ClientiProvider>
+          </FurnizoriProvider>
         <Footer/>
       </body>
     </html>
