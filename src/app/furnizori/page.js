@@ -1,6 +1,5 @@
 "use client";
 
-import { useFurnizor, useFurnizorInputs } from "@/lib/hooks/furnizori";
 import {
     Table,
     TableBody,
@@ -21,26 +20,27 @@ import {
     SquarePen,
     Trash
 } from 'lucide-react';
+import { useContext } from "react";
+import { FurnizoriContext } from "@/lib/context/furnizori";
 
 function Furnizori() {
+
+    const [furnizorObj, furnizorInputs] = useContext(FurnizoriContext);
 
     const {
         furnizor,
         handleAddFurnizor,
         removeFurnizor
-    } = useFurnizor()
+    } = furnizorObj
     
     const {
         nume, setNume,
         email, setEmail,
         adresa, setAdresa,
-        handleNume,
-        handleEmail,
-        handleAdresa,
         numeError, setNumeError,
         adresaError, setAdresaError,
         emailError, setEmailError
-    } = useFurnizorInputs();
+    } = furnizorInputs;
 
     return (
         <>

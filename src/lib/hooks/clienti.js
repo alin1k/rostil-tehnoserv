@@ -17,8 +17,6 @@ export const useClient = ()=>{
   function handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail,setNumeError,setEmailError,setTelefonError) {
     
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    let valid = true;
-
 
     let isValid = true;
 

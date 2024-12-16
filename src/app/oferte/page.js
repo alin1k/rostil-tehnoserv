@@ -1,5 +1,6 @@
 "use client"
-import {useContext,useState} from 'react'
+
+import { useContext } from 'react'
 import { ClientiContext } from '@/lib/context/clienti'
 
 import {
@@ -22,47 +23,34 @@ import {
   SquarePen,
   Trash
 } from 'lucide-react';
-
+import { OferteContext } from '@/lib/context/oferte'
 
 export default function Oferte() {
  
-  const [clienti] = useContext(ClientiContext);
-  const {client} = clienti
+  const [clientiObj] = useContext(ClientiContext);
+  const {client} = clientiObj;
+
+  const [oferteObj, oferteInputs] = useContext(OferteContext);
  
- const [numeOf,setNumeOf] = useState("");
- const [numeCl,setNumeCl] = useState("");
- const [oferta , setOferta] = useState([]);
+  const {
+    oferta,
+    handleAdaugareOferta,
+    removeOferta,
+  } = oferteObj
 
- function handleAdaugareOferta()
- {
-  if(numeOf!=="" && numeCl !== ""){
-  const newOferta = {nume : numeOf,
-                     numeClient : numeCl};
-
-  setOferta(o => [...o,newOferta]);
-  setNumeOf("")
-  }
- }
-
-  function handleNumeOf(event){
-    setNumeOf(event.target.value);
-  }
-
-  function handleNumeCl(event){
-    setNumeCl(event.target.value);
-  }
-
-  function removeOferta(index){
-    setOferta(oferta.filter((n,i) => index !== i ))
-  }
-
+  const {
+    numeOferta, setNumeOferta,
+    numeClient,
+    handleNumeClient,
+    handleNumeOferta,
+  } = oferteInputs;
 
   return (
     <>
      <div className="flex justify-center items-center ">
         <div className="border-2 border-black p-4 w-[450px]  mb-8 mt-4 p-4 shadow-2xl ">
 
-          <p className="text-center text-4xl mt-2">Adăugare Oferă</p>
+          <p className="text-center text-4xl mt-2">Adăugare Ofertă</p>
 
           <div className="px-5 py-8 flex flex-col w-[320px]">
             <p>Nume ofertă:</p>
@@ -71,13 +59,13 @@ export default function Oferte() {
               maxLength={50}
               required
               className={`mt-2 mb-8 border-b focus:outline-none`}
-              onChange={handleNumeOf}
-              value={numeOf}
+              onChange={handleNumeOferta}
+              value={numeOferta}
             />
            
 
             <p>Alege clientul:</p>
-            <select value={numeCl} onChange={handleNumeCl} className='mt-2 border-b focus:outline-none  appearance-none bg-transparent '>
+            <select value={numeClient} onChange={handleNumeClient} className='mt-2 border-b focus:outline-none  appearance-none bg-transparent '>
               <option value="" >
                    Selectati numele clientului
               </option>
@@ -88,7 +76,7 @@ export default function Oferte() {
                   </option>
                 ))
               ) : (
-                <option disabled>Nu exista clienti in baza de date</option>
+                <option>Nu exista clienti in baza de date</option>
               )}
             </select>
 
@@ -97,7 +85,7 @@ export default function Oferte() {
 
           <button
             className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-200 active:scale-95 ease-out"
-            onClick={() => handleAdaugareOferta()}
+            onClick={() => handleAdaugareOferta(numeOferta, setNumeOferta, numeClient)}
           >
             Adăugare în listă
           </button>
