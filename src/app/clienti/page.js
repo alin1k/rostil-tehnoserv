@@ -1,6 +1,5 @@
 "use client"
 
-import { useClient, useClientInputs } from "@/lib/hooks/clienti";
 import {
   Table,
   TableBody,
@@ -21,9 +20,13 @@ import {
   SquarePen,
   Trash
 } from 'lucide-react';
+import { useContext } from "react";
+import { ClientiContext } from "@/lib/context/clienti";
 function Clienti() {
+
+  const [clientObj, clientInputs] = useContext(ClientiContext);
   
-  const {client, handleAdaugare, removeClient} = useClient();
+  const {client, handleAdaugare, removeClient} = clientObj;
   const {
     nume, setNume,
     telefon, setTelefon,
@@ -34,12 +37,7 @@ function Clienti() {
     numeError, setNumeError,
     telefonError, setTelefonError,
     emailError, setEmailError,
-  } = useClientInputs()
-
-  function validateEmail(email){
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-    return regex.test(email);
-  }
+  } = clientInputs;
 
   return (
     <>
