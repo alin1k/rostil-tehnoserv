@@ -71,3 +71,13 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* Vreau sa schimb culoare textului pentru prima optiune din select dar nu functioneaza */
+select option {
+  color: black !important; 
+}
+
+
+select option:first-child {
+  color: #6B7280 !important; 
+}
