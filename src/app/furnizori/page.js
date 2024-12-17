@@ -22,6 +22,18 @@ import {
 } from 'lucide-react';
 import { useContext } from "react";
 import { FurnizoriContext } from "@/lib/context/furnizori";
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 function Furnizori() {
 
@@ -44,7 +56,7 @@ function Furnizori() {
 
     return (
         <>
-            <div className="flex justify-center items-center mb-9">
+            {/* <div className="flex justify-center items-center mb-9">
                 <div className="border-2 border-black p-4 w-[450px] mt-4 shadow-2xl">
 
                     <p className="text-center text-4xl mt-2">Adăugare Furnizor</p>
@@ -89,7 +101,33 @@ function Furnizori() {
                         Adăugare în listă
                     </button>
                 </div>
-            </div>
+            </div> */}
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button>Adaugă furnizor</Button>
+                </DialogTrigger>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Adăugare furnizor</DialogTitle>
+                    </DialogHeader>
+                    <div>
+                        <Label htmlFor="numefurnizor">Nume furnizor:</Label>
+                        <Input id="numefurnizor" />
+                        <Label htmlFor="adresafurnizor">Adresă furnizor:</Label>
+                        <Input id="adresafurnizor" />
+                        <Label htmlFor="websitefurnizor">Website furnizor:</Label>
+                        <Input id="websitefurnizor" />
+                    </div>
+                    <DialogFooter>
+                        <Button
+                            onClick={() => handleAddFurnizor(nume, adresa, email, setNume, setAdresa, setEmail, setNumeError, setAdresaError, setEmailError)}
+                            type="submit"
+                        >
+                            Adăugare în listă
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
 
             <div className="flex justify-center items-center">
                 {furnizor.length === 0 ? (

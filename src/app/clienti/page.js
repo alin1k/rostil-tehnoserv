@@ -22,6 +22,18 @@ import {
 } from 'lucide-react';
 import { useContext } from "react";
 import { ClientiContext } from "@/lib/context/clienti";
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 function Clienti() {
 
   const [clientObj, clientInputs] = useContext(ClientiContext);
@@ -42,7 +54,7 @@ function Clienti() {
   return (
     <>
 
-      <div className="flex justify-center items-center mb-9">
+      {/* <div className="flex justify-center items-center mb-9">
         <div className="border-2 border-black p-4 w-[450px] mt-4 p-4 shadow-2xl ">
 
           <p className="text-center text-4xl mt-2">Adăugare Client</p>
@@ -91,7 +103,34 @@ function Clienti() {
             Adăugare în listă
           </button>
         </div>
-      </div>
+      </div> */}
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>Adaugă client</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Adăugare client</DialogTitle>
+          </DialogHeader>
+          <div>
+            <Label htmlFor="numeclient">Nume client:</Label>
+            <Input id="numeclient" />
+            <Label htmlFor="telefonclient">Număr de telefon client:</Label>
+            <Input id="telefonclient" />
+            <Label htmlFor="emailclient">Adresă de email client:</Label>
+            <Input id="emailclient" />
+          </div>
+          <DialogFooter>
+            <Button
+              onClick={() => handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail, setNumeError, setTelefonError, setEmailError)}
+              type="submit"
+            >
+              Adăugare în listă
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div>
 
