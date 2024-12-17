@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useOferte = ()=>{
   const [oferta , setOferta] = useState([]);
+
+  useEffect(() =>{
+    const StoredOferte = localStorage.getItem("oferte");
+    if(StoredOferte){
+      setOferta(JSON.parse(StoredOferte));
+    }
+  }, []);
+
+  useEffect(() =>{
+    localStorage.setItem("oferte",JSON.stringify(oferta))
+  }, [oferta]);
   
   function handleAdaugareOferta(numeOferta, setNumeOferta, numeClient)
   {
