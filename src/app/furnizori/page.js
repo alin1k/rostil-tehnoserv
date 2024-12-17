@@ -106,24 +106,46 @@ function Furnizori() {
                 <DialogTrigger asChild>
                     <Button>Adaugă furnizor</Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Adăugare furnizor</DialogTitle>
                     </DialogHeader>
-                    <div>
-                        <Label htmlFor="numefurnizor">Nume furnizor:</Label>
-                        <Input id="numefurnizor" />
-                        <Label htmlFor="adresafurnizor">Adresă furnizor:</Label>
-                        <Input id="adresafurnizor" />
-                        <Label htmlFor="websitefurnizor">Website furnizor:</Label>
-                        <Input id="websitefurnizor" />
+                    <div className="grid gap-4 py-4">
+                        <div>
+                            <Label htmlFor="numefurnizor">Nume furnizor:</Label>
+                            <Input id="numefurnizor"
+                                onChange={(e) => setNume(e.target.value)}
+                                placeholder="Introduceți numele furnizorului"
+                                value={nume}
+                                maxLength={50}
+                                required />
+                        </div>
+                        <div>
+                            <Label htmlFor="adresafurnizor">Adresă furnizor:</Label>
+                            <Input id="adresafurnizor"
+                                onChange={(e) => setAdresa(e.target.value)}
+                                placeholder="Introduceți adresa furnizorului"
+                                value={adresa}
+                                maxLength={50}
+                                required />
+                        </div>
+                        <div>
+                            <Label htmlFor="websitefurnizor">Website furnizor:</Label>
+                            <Input id="websitefurnizor"
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Introduceți website-ul furnizorului"
+                                value={email}
+                                maxLength={50}
+                                type="url"
+                                required />
+                        </div>
                     </div>
                     <DialogFooter>
                         <Button
                             onClick={() => handleAddFurnizor(nume, adresa, email, setNume, setAdresa, setEmail, setNumeError, setAdresaError, setEmailError)}
                             type="submit"
                         >
-                            Adăugare în listă
+                            Adăugare
                         </Button>
                     </DialogFooter>
                 </DialogContent>

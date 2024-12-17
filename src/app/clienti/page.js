@@ -109,24 +109,47 @@ function Clienti() {
         <DialogTrigger asChild>
           <Button>Adaugă client</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Adăugare client</DialogTitle>
           </DialogHeader>
-          <div>
-            <Label htmlFor="numeclient">Nume client:</Label>
-            <Input id="numeclient" />
-            <Label htmlFor="telefonclient">Număr de telefon client:</Label>
-            <Input id="telefonclient" />
-            <Label htmlFor="emailclient">Adresă de email client:</Label>
-            <Input id="emailclient" />
+          <div className="grid gap-4 py-4">
+            <div >
+              <Label htmlFor="numeclient">Nume client</Label>
+              <Input id="numeclient"
+                placeholder="Introduceți numele clientului"
+                value={nume}
+                onChange={handleClient}
+                maxLength={50}
+                required />
+            </div>
+            <div>
+              <Label htmlFor="telefonclient">Număr de telefon client</Label>
+              <Input id="telefonclient"
+                placeholder="Introduceți numărul de telefon al clientului"
+                value={telefon}
+                onChange={handleTelefon}
+                maxLength={50}
+                type="number"
+                required />
+            </div>
+            <div>
+              <Label htmlFor="emailclient">Adresă de email client</Label>
+              <Input id="emailclient"
+                placeholder="Introduceți email-ul clientului"
+                value={email}
+                onChange={handleEmail}
+                maxLength={50}
+                type="email"
+                required />
+            </div>
           </div>
           <DialogFooter>
             <Button
               onClick={() => handleAdaugare(nume, telefon, email, setNume, setTelefon, setEmail, setNumeError, setTelefonError, setEmailError)}
               type="submit"
             >
-              Adăugare în listă
+              Adăugare
             </Button>
           </DialogFooter>
         </DialogContent>
