@@ -20,24 +20,23 @@ export const useClient = ()=>{
 
     let isValid = true;
 
-    // Reset error states
+  
     setNumeError("");
     setTelefonError("");
     setEmailError("");
 
-    // Validare pentru nume
+  
     if (nume === "") {
       setNumeError("Numele este obligatoriu.");
       isValid = false;
     }
 
-    // Validare pentru telefon
     if (telefon === "" ) {
       setTelefonError("Telefonul este invalid");
       isValid = false;
     }
 
-    // Validare pentru email
+ 
     if (!regex.test(email) || email ==="") {
       setEmailError("Emailul este invalid.");
       isValid = false;
