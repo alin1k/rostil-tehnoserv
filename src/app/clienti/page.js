@@ -25,8 +25,8 @@ import { ClientiContext } from "@/lib/context/clienti";
 function Clienti() {
 
   const [clientObj, clientInputs] = useContext(ClientiContext);
-  
-  const {client, handleAdaugare, removeClient} = clientObj;
+
+  const { client, handleAdaugare, removeClient } = clientObj;
   const {
     nume, setNume,
     telefon, setTelefon,
@@ -41,8 +41,8 @@ function Clienti() {
 
   return (
     <>
-     
-     <div className="flex justify-center items-center mb-9">
+
+      <div className="flex justify-center items-center mb-9">
         <div className="border-2 border-black p-4 w-[450px] mt-4 p-4 shadow-2xl ">
 
           <p className="text-center text-4xl mt-2">Adăugare Client</p>
@@ -57,7 +57,7 @@ function Clienti() {
               required
               className={`mt-2 mb-8 border-b ${numeError ? 'border-red-500' : 'border-gray-500'} ${numeError ? 'placeholder-red-500' : ''} focus:outline-none`}
             />
-           
+
 
             <p>Telefon client:</p>
             <input
@@ -69,7 +69,7 @@ function Clienti() {
               required
               className={`mt-2 mb-8 border-b ${telefonError ? 'border-red-500' : 'border-gray-500'} ${telefonError ? 'placeholder-red-500' : ''} focus:outline-none`}
             />
-           
+
 
             <p>Email client:</p>
             <input
@@ -81,7 +81,7 @@ function Clienti() {
               required
               className={`mt-2 border-b ${emailError ? 'border-red-500' : 'border-gray-500'} ${emailError ? 'placeholder-red-500' : ''} focus:outline-none`}
             />
-           
+
           </div>
 
           <button
@@ -92,12 +92,12 @@ function Clienti() {
           </button>
         </div>
       </div>
-          
+
       <div>
 
         <ul>
           {client.length === 0 ? (
-            <p className="text-center text-lg">Tabelul nu are informații introduse.</p>
+            <p className="text-center text-lg">Nu există clienți adăugați.</p>
           ) : (
             <Table>
               <TableHeader>
