@@ -26,7 +26,6 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogFooter,
     DialogHeader,
     DialogTitle,
@@ -56,88 +55,50 @@ function Furnizori() {
 
     return (
         <>
-            {/* <div className="flex justify-center items-center mb-9">
-                <div className="border-2 border-black p-4 w-[450px] mt-4 shadow-2xl">
+            <h1 className="font-bold text-xl mb-5">Gestionare furnizori</h1>
 
-                    <p className="text-center text-4xl mt-2">Adăugare Furnizor</p>
-
-                    <div className="px-5 py-8 flex flex-col w-[320px]">
-                        <p>Nume furnizor:</p>
-                        <input
-                            onChange={(e) => setNume(e.target.value)}
-                            placeholder="Adăugați numele furnizorului"
-                            value={nume}
-                            maxLength={50}
-                            required
-                            className={`mt-2 mb-8 border-b ${numeError ? 'border-red-500' : 'border-gray-500'} ${numeError ? 'placeholder-red-500' : ''} focus:outline-none`}
-                        />
-
-                        <p>Adresă furnizor:</p>
-                        <input
-                            onChange={(e) => setAdresa(e.target.value)}
-                            placeholder="Adăugați adresa furnizorului"
-                            value={adresa}
-                            maxLength={50}
-                            required
-                            className={`mt-2 mb-8 border-b ${adresaError ? 'border-red-500' : 'border-gray-500'} ${adresaError ? 'placeholder-red-500' : ''} focus:outline-none`}
-                        />
-
-                        <p>Website furnizor:</p>
-                        <input
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Adăugați website-ul furnizorului"
-                            value={email}
-                            maxLength={50}
-                            type="url"
-                            required
-                            className={`mt-2 border-b ${emailError ? 'border-red-500' : 'border-gray-500'} ${emailError ? 'placeholder-red-500' : ''} focus:outline-none`}
-                        />
-                    </div>
-
-                    <button
-                        onClick={() => handleAddFurnizor(nume, adresa, email, setNume, setAdresa, setEmail, setNumeError, setAdresaError, setEmailError)}
-                        className="w-full bg-black py-2 rounded-2xl text-white transform transition-all duration-200 active:scale-95 ease-out"
-                    >
-                        Adăugare în listă
-                    </button>
-                </div>
-            </div> */}
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button>Adaugă furnizor</Button>
+                    <Button className="mb-5">Adaugă furnizor</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Adăugare furnizor</DialogTitle>
                     </DialogHeader>
-                    <div className="grid gap-4 py-4">
+                    <div className="flex flex-col gap-4 py-4">
                         <div>
                             <Label htmlFor="numefurnizor">Nume furnizor:</Label>
                             <Input id="numefurnizor"
                                 onChange={(e) => setNume(e.target.value)}
-                                placeholder="Introduceți numele furnizorului"
+                                placeholder="SC Corporatie SRL"
                                 value={nume}
                                 maxLength={50}
-                                required />
+                                required 
+                                className={`${numeError ? 'border-red-500' : 'border-gray-500'}`}
+                            />
                         </div>
                         <div>
                             <Label htmlFor="adresafurnizor">Adresă furnizor:</Label>
                             <Input id="adresafurnizor"
                                 onChange={(e) => setAdresa(e.target.value)}
-                                placeholder="Introduceți adresa furnizorului"
+                                placeholder="Brasov, Romania"
                                 value={adresa}
                                 maxLength={50}
-                                required />
+                                required 
+                                className={`${adresaError ? 'border-red-500' : 'border-gray-500'}`}
+                            />
                         </div>
                         <div>
                             <Label htmlFor="websitefurnizor">Website furnizor:</Label>
                             <Input id="websitefurnizor"
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Introduceți website-ul furnizorului"
+                                placeholder="www.furnizor.ro"
                                 value={email}
                                 maxLength={50}
                                 type="url"
-                                required />
+                                required 
+                                className={`${emailError ? 'border-red-500' : 'border-gray-500'}`}
+                            />
                         </div>
                     </div>
                     <DialogFooter>

@@ -26,7 +26,7 @@ import Image from 'next/image'
 export default function Produse() {
     return (
         <div>
-            <h1 className='text-xl font-bold mb-5'>Pagina de produse</h1>
+            <h1 className='text-xl font-bold mb-5'>Gestionare produse</h1>
             <Table>
                 <TableHeader>
                     <TableRow>
