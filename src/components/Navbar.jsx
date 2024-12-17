@@ -23,24 +23,27 @@ export default function Navbar() {
       <Link href='/'><Image src="/images/RostilLogoBun.png" alt="logo" width={225} height={50} /></Link>
       <div className='flex items-center gap-5'>
         <Link href="/oferte" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
-            <ClipboardList className='scale-75'/>
-            <span>Oferte</span>
+          <ClipboardList className='scale-75' />
+          <span>Oferte</span>
         </Link>
         <Link href="/produse" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
-            <Package className='scale-75'/>
-            <span>Produse</span>
+          <Package className='scale-75' />
+          <span>Produse</span>
         </Link>
         <Link href="/furnizori" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
-            <Truck className='scale-75'/>
-            <span>Furnizori</span>
+          <Truck className='scale-75' />
+          <span>Furnizori</span>
         </Link>
         <Link href="/clienti" className="hover:cursor-pointer hover:bg-accent rounded-xl p-2 flex gap-1">
-            <User className='scale-75'/>
-            <span>Clienți</span>
+          <User className='scale-75' />
+          <span>Clienți</span>
         </Link>
-        <Button variant='outline' size='icon'>
-          <Settings/>
-        </Button>
+        <Link href="/setari">
+          <Button variant='outline' size='icon'>
+            <Settings />
+          </Button>
+        </Link>
+
       </div>
     </div>
   )
