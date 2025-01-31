@@ -49,6 +49,7 @@ export const useFurnizor = () => {
 
     if (isValid) {
       const newFurnizor = {
+        id: Date.now().toString(),
         fNume: nume,
         fAdresa: adresa,
         fEmail: email,
@@ -62,10 +63,49 @@ export const useFurnizor = () => {
     }
   }
 
+  function removeFurnizor(index) {
+    setFurnizor(furnizor.filter((componenta, i) => index !== i))
+  }
+
+  function editFurnizor(
+    id,
+    nume,
+    adresa,
+    email,
+    setNumeError,
+    setAdresaError,
+    setEmailError
+  ){
+
+    let isValid = true;
+
+    if (!nume) {
+      setNumeError("Numele furnizorului este obligatoriu.");
+      isValid = false;
+    }
+
+    if (!adresa) {
+      setAdresaError("Adresa furnizorului este obligatorie.");
+      isValid = false;
+    }
+
+  
+    if (!email) {
+      setEmailError("Website-ul furnizorului trebuie să fie valid.");
+      isValid = false;
+    }
+
+    if (isValid) {
+      setFurnizor(furnizor.map(furnizor => furnizor.id === id ? {fNume: nume, fAdresa: adresa, fEmail: email, id: id} : furnizor));
+    }
+  }
+
   return {
     furnizor,
     setFurnizor,
     handleAddFurnizor,
+    removeFurnizor,
+    editFurnizor
   };
 };
 

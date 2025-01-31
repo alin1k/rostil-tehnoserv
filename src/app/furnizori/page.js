@@ -20,7 +20,7 @@ import {
     SquarePen,
     Trash
 } from 'lucide-react';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FurnizoriContext } from "@/lib/context/furnizori";
 import { Button } from "@/components/ui/button"
 import {
@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import EditFurnizorDialog from "@/components/EditFurnizorDialog";
 
 function Furnizori() {
 
@@ -52,6 +53,9 @@ function Furnizori() {
         adresaError, setAdresaError,
         emailError, setEmailError
     } = furnizorInputs;
+
+    const [openEdit, setOpenEdit] = useState(false);
+    const [furnizorEdit, setFurnizorEdit] = useState({});
 
     return (
         <>
@@ -116,51 +120,56 @@ function Furnizori() {
                 {furnizor.length === 0 ? (
                     <p className="text-center text-lg">Nu există furnizori adăugați.</p>
                 ) : (
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[150px] text-center">Nume furnizor</TableHead>
-                                <TableHead className="text-center">Adresă furnizor</TableHead>
-                                <TableHead className="text-center">Website furnizor</TableHead>
-                                <TableHead className="text-right w-[70px]">Acțiuni</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {furnizor.map((furnizor, index) => (
-                                <TableRow key={index}>
-                                    <TableCell className="text-center">{furnizor.fNume}</TableCell>
-                                    <TableCell className="text-center">{furnizor.fAdresa}</TableCell>
-                                    <TableCell className="text-center">{furnizor.fEmail}</TableCell>
-                                    <TableCell className="text-center">
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger>
-                                                <Ellipsis className="hover:bg-border rounded-full" />
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuContent>
-                                                <DropdownMenuItem>
-                                                    <BookOpenText />
-                                                    <span>Detalii</span>
-                                                </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <SquarePen />
-                                                    <span>Editare</span>
-                                                </DropdownMenuItem>
-                                                <DropdownMenuItem>
-                                                    <Trash />
-                                                    <span
+                    <>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead className="w-[150px] text-center">Nume furnizor</TableHead>
+                                    <TableHead className="text-center">Adresă furnizor</TableHead>
+                                    <TableHead className="text-center">Website furnizor</TableHead>
+                                    <TableHead className="text-right w-[70px]">Acțiuni</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {furnizor.map((furnizor, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell className="text-center">{furnizor.fNume}</TableCell>
+                                        <TableCell className="text-center">{furnizor.fAdresa}</TableCell>
+                                        <TableCell className="text-center">{furnizor.fEmail}</TableCell>
+                                        <TableCell className="text-center">
+                                            <DropdownMenu modal={false}>
+                                                <DropdownMenuTrigger>
+                                                    <Ellipsis className="hover:bg-border rounded-full" />
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent>
+                                                    <DropdownMenuItem>
+                                                        <BookOpenText />
+                                                        <span>Detalii</span>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem
+                                                        className="hover:cursor-pointer"
+                                                        onClick={() => {setFurnizorEdit(furnizor); setOpenEdit(true);}}
+                                                    >
+                                                        <SquarePen />
+                                                        <span>Editare</span>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem 
                                                         className="hover:cursor-pointer"
                                                         onClick={() => removeFurnizor(index)}
                                                     >
-                                                        Șterge
-                                                    </span>
-                                                </DropdownMenuItem>
-                                            </DropdownMenuContent>
-                                        </DropdownMenu>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                                                        <Trash />
+                                                        <span>Șterge</span>
+                                                    </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                            </DropdownMenu>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+
+                        <EditFurnizorDialog openEdit={openEdit} setOpenEdit={setOpenEdit} furnizor={furnizorEdit}/>
+                    </>
                 )}
             </div>
         </>
