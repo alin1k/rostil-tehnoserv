@@ -133,7 +133,7 @@ export default function Oferte() {
                 :
                   <>
                     <Input disabled placeholder="Nu este nici un client adăugat"/>
-                    <Link href="/clienti" asChild>
+                    <Link href="/clienti">
                       <Button className="mt-2">
                         Adaugă un client
                       </Button>
