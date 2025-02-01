@@ -158,14 +158,16 @@ export default function Oferte() {
             <CardHeader>
               <CardTitle className="text-xl">{oferta.nume}</CardTitle>
               <CardDescription className="flex items-center -ms-1"><User className='scale-75'/> {oferta.numeClient}</CardDescription>
-              <CardDescription className="flex items-center -ms-1"><Calendar className='scale-75'/> Ultima modificare: {new Date().toLocaleDateString()}</CardDescription>
+              <CardDescription className="flex items-center -ms-1"><Calendar className='scale-75'/> Ultima modificare: {oferta.data_modificare}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Produse: <span className='font-bold'>5</span></p>
-              <p>Pret total: <span className='font-bold text-lg'>1140.50 LEI</span></p>
+              <p>Produse: <span className='font-bold'>{oferta.produse.length}</span></p>
+              <p>Pret total: <span className='font-bold text-lg'>{oferta.total} RON</span></p>
             </CardContent>
             <CardFooter className="grid grid-cols-2 gap-2">
-              <Button variant="secondary">Edit</Button>
+              <Link href={`/oferte/${oferta.id}`}>
+                <Button variant="secondary" className="w-full">Edit</Button>
+              </Link>
               <Button>Export</Button>
             </CardFooter>
             

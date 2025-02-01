@@ -16,9 +16,13 @@ export const useOferte = ()=>{
   
   function handleAdaugareOferta(numeOferta, setNumeOferta, numeClient)
   {
-    if(numeOferta!=="" && numeClient !== ""){
+    if(numeOferta !== "" && numeClient !== ""){
     const newOferta = {
+      id: Date.now().toString(),
+      data_modificare: new Date().toLocaleDateString(),
+      total: 0,
       nume : numeOferta,
+      produse: [],
       numeClient : numeClient
     };
 
@@ -31,10 +35,15 @@ export const useOferte = ()=>{
     setOferta(oferta.filter((n,i) => index !== i ))
   }
 
+  function editOferta(newOferta){
+    setOferta(oferta.map(of => of.id === newOferta.id? newOferta : of))
+  }
+
   return {
     oferta, setOferta,
     handleAdaugareOferta,
     removeOferta,
+    editOferta
   }
 }
 
