@@ -41,6 +41,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label"
 import Link from 'next/link';
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import OfferReport from '@/components/OfferReport';
 
 export default function Oferte() {
  
@@ -168,7 +171,29 @@ export default function Oferte() {
               <Link href={`/oferte/${oferta.id}`}>
                 <Button variant="secondary" className="w-full">Edit</Button>
               </Link>
-              <Button>Export</Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Export</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Exportare ofertă în format PDF</DialogTitle>
+                  </DialogHeader>
+                  <PDFDownloadLink document={<OfferReport oferta={oferta}/>} fileName={`${oferta.nume} - ${oferta.data_modificare}.pdf`}>
+                    {({ blob, url, loading, error }) =>
+                      loading ? 'Loading document...' : <Button>'Download PDF'</Button>
+                    }
+                  </PDFDownloadLink>
+                  {/* <DialogFooter>
+                    <DialogClose asChild>
+                      <Button variant="secondary">
+                        Anulează
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter> */}
+                </DialogContent>
+              </Dialog>
+              
             </CardFooter>
             
             <AlertDialog>
