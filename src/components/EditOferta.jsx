@@ -182,7 +182,7 @@ export default function EditOferta({id}) {
           </DialogContent>
         </Dialog>
 
-        <h2 className='text-xl font-bold text-right'>Total: {total}</h2>
+        <h2 className='text-xl font-bold text-right'>Total: {total.toFixed(2)} RON</h2>
 
       </div>
 
