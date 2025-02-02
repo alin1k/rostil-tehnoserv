@@ -181,7 +181,7 @@ export default function Oferte() {
                   </DialogHeader>
                   <PDFDownloadLink document={<OfferReport oferta={oferta}/>} fileName={`${oferta.nume} - ${oferta.data_modificare}.pdf`}>
                     {({ blob, url, loading, error }) =>
-                      loading ? 'Loading document...' : <Button>'Download PDF'</Button>
+                      loading ? 'Loading document...' : <Button>Download PDF</Button>
                     }
                   </PDFDownloadLink>
                   {/* <DialogFooter>
