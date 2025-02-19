@@ -62,10 +62,15 @@ export const useFurnizor = () => {
     }
   }
 
+  function removeFurnizor(index){
+    setFurnizor(prev => prev.filter((f, i)=> i!== index));
+  }
+
   return {
     furnizor,
     setFurnizor,
     handleAddFurnizor,
+    removeFurnizor
   };
 };
 

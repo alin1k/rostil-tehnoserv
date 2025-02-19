@@ -41,6 +41,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from "@/components/ui/label"
 import Link from 'next/link';
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import OfferReport from '@/components/OfferReport';
 
 export default function Oferte() {
  
@@ -133,7 +136,7 @@ export default function Oferte() {
                 :
                   <>
                     <Input disabled placeholder="Nu este nici un client adăugat"/>
-                    <Link href="/clienti" asChild>
+                    <Link href="/clienti">
                       <Button className="mt-2">
                         Adaugă un client
                       </Button>
@@ -158,15 +161,39 @@ export default function Oferte() {
             <CardHeader>
               <CardTitle className="text-xl">{oferta.nume}</CardTitle>
               <CardDescription className="flex items-center -ms-1"><User className='scale-75'/> {oferta.numeClient}</CardDescription>
-              <CardDescription className="flex items-center -ms-1"><Calendar className='scale-75'/> Ultima modificare: {new Date().toLocaleDateString()}</CardDescription>
+              <CardDescription className="flex items-center -ms-1"><Calendar className='scale-75'/> Ultima modificare: {oferta.data_modificare}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Produse: <span className='font-bold'>5</span></p>
-              <p>Pret total: <span className='font-bold text-lg'>1140.50 LEI</span></p>
+              <p>Produse: <span className='font-bold'>{oferta.produse.length}</span></p>
+              <p>Pret total: <span className='font-bold text-lg'>{oferta.total} RON</span></p>
             </CardContent>
             <CardFooter className="grid grid-cols-2 gap-2">
-              <Button variant="secondary">Edit</Button>
-              <Button>Export</Button>
+              <Link href={`/oferte/${oferta.id}`}>
+                <Button variant="secondary" className="w-full">Edit</Button>
+              </Link>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Export</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Exportare ofertă în format PDF</DialogTitle>
+                  </DialogHeader>
+                  <PDFDownloadLink document={<OfferReport oferta={oferta}/>} fileName={`${oferta.nume} - ${oferta.data_modificare}.pdf`}>
+                    {({ blob, url, loading, error }) =>
+                      loading ? 'Loading document...' : <Button>Download PDF</Button>
+                    }
+                  </PDFDownloadLink>
+                  {/* <DialogFooter>
+                    <DialogClose asChild>
+                      <Button variant="secondary">
+                        Anulează
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter> */}
+                </DialogContent>
+              </Dialog>
+              
             </CardFooter>
             
             <AlertDialog>
